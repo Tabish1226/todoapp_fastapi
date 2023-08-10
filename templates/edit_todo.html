@@ -1,0 +1,32 @@
+{% include "layout.html" %}
+
+    <!-- Make a card which has a table inside of it and table be showing todos -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Edit your todo!!!</div>
+        <div class="card-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="">Title</label>
+              <input type="text" class="form-control" name="title" value="{{ todo.title }}" />
+            </div>
+            <div class="form-group">
+              <label for="">Description</label>
+              <textarea name="description" class="form-control" rows="3">{{ todo.description }}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="">Priority</label>
+              <select name="priority" class="form-control">
+                {% for i in range(1, 6) %}
+                <option value="{{ i }}" {% if todo.priority == i %} selected {% endif %}>{{ i }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Edit Your Todo
+            </button>
+            <button type="button" onclick="window.location.href='{{ url_for('delete_todo', todo_id=todo.id) }}'" class="btn btn-danger">Delete Todo</button>
+          </form>
+        </div>
+      </div>
+    </div>

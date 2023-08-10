@@ -1,0 +1,37 @@
+{% include "layout.html" %}
+    <!-- Make a card which has a table inside of it and table be showing todos -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+
+          {% if msg %}
+          {% if msg == "Logout Successful" or msg == "User created successfully" or msg == "Password changed successfully."%}
+          <div class="alert alert-success" role="alert">
+            {{ msg }}
+          </div>
+          {% else %}
+          <div class="alert alert-danger" role="alert">
+            {{ msg }}
+          </div>
+          {% endif %}
+          {% endif %}
+
+
+          <form method="POST">
+            <div class="form-group">
+              <label for="">Username</label>
+              <input type="text" class="form-control" name="username" required/>
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" class="form-control" name="password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="{{ url_for('register') }}" class="card-link">Register?</a>
+        </div>
+      </div>
+    </div>

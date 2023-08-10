@@ -1,0 +1,46 @@
+{% include "layout.html" %}
+    <!-- Make a card which has a table inside of it and table be showing todos -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Your Todos</div>
+        <div class="card-body">
+          <h5 class="card-title">Todo List</h5>
+          <p class="card-text">
+            Information regarding stuff that needs to be done.
+          </p>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Info</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in todos %}
+              {% if todo.complete %}
+              <tr class="pointer alert alert-success strike-through-td">
+                <td>{{ loop.index }}</td>
+                <td>{{ todo.title }}</td>
+                <td>
+                    <button onclick="window.location.href='{{ url_for('completed_todo', todo_id=todo.id) }}'" class="btn btn-success">Undo</button>
+                    <button onclick="window.location.href='{{ url_for('edit_todo', todo_id=todo.id) }}'" class="btn btn-info">Edit</button>
+                </td>
+            </tr>
+            {% else %}
+            <tr class="pointer">
+              <td>{{ loop.index }}</td>
+              <td>{{ todo.title }}</td>
+              <td>
+                <button onclick="window.location.href='{{ url_for('completed_todo', todo_id=todo.id) }}'" class="btn btn-success">Complete</button>
+                <button onclick="window.location.href='{{ url_for('edit_todo', todo_id=todo.id) }}'" class="btn btn-info">Edit</button>
+              </td>
+            </tr>
+            {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+          <a href="{{ url_for('add_todo') }}" class="btn btn-primary">Add a new todo!</a>
+        </div>
+      </div>
+    </div>

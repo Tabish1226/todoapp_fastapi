@@ -1,0 +1,29 @@
+{% include "layout.html" %}
+
+    <!-- Make a card which has a table inside of it and table be showing todos -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Make a new todo</div>
+        <div class="card-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="">Title</label>
+              <input type="text" class="form-control" name="title"/>
+            </div>
+            <div class="form-group">
+              <label for="">Description</label>
+              <input type="text" class="form-control" name="description"/>
+            </div>
+            <div class="form-group">
+              <label for="">Priority</label>
+              <select name="priority" class="form-control" name="priority">
+                {% for i in range(1, 6) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>

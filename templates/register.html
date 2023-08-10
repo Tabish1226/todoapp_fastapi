@@ -1,0 +1,52 @@
+{% include "layout.html" %}
+
+    <!-- Make a card which has a table inside of it and table be showing todos -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Register</div>
+        <div class="card-body">
+
+          {% if msg %}
+          <div class="alert alert-danger" role="alert">
+            {{ msg }}
+          </div>
+          {% endif %}
+
+
+          <form method="POST" action="{{ url_for('register') }}">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="">Email</label>
+                <input type="email" class="form-control" name="email" id="">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="">Username</label>
+                <input type="text" class="form-control" name="username" id="">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="">First name</label>
+                <input type="text" class="form-control" name="first_name" id="">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="">Last name</label>
+                <input type="text" class="form-control" name="last_name" id="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" class="form-control" name="password" id="">
+            </div>
+            <div class="form-group">
+              <label for="">Verify Password</label>
+              <input type="password" class="form-control" name="password2" id="">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="{{ url_for('login') }}" class="card-link">Already have an account?</a>
+        </div>
+      </div>
+    </div>
